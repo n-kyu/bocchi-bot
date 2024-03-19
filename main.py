@@ -1,5 +1,6 @@
 import os
 from pyexpat import model
+import random
 import discord
 import openai
 from discord.ext import commands
@@ -17,9 +18,21 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 openai.api_key=OPENAI_API_KEY
 
+#Emoticons List
+emoticons = [
+    "૮(˶╥︿╥)ა",
+    "(╥﹏╥)",
+    "(╥ᆺ╥；)",
+    "(◉ ᴖ ◉)",
+    "(⊃◜⌓◝⊂)",
+    "(─ ‿ ─)",
+    "🗿",
+    "😳"
+]
+
 async def search_history_channel(channel, limit=10):
     messages_list = []
-    async for message in channel.history(limit=limit, oldest_first=True):
+    async for message in channel.history(limit=limit, oldest_first=False):
 
         messages_list.append({
             "role": "user" if message.author.id != bot.user.id else "system",
@@ -53,7 +66,10 @@ async def on_message(message):
         history_messages = await search_history_channel(message.channel)
         response = asking_gpt(history_messages)
 
-        await message.reply(response)
+        emoticon = random.choice(emoticons)
+        response_with_emoticon = f"{response} {emoticon}"
+
+        await message.reply(response_with_emoticon)
 
     await bot.process_commands(message)
 
