@@ -47,7 +47,7 @@ OPENAI_API_KEY=YOUR_OPENAI_API_KEY
 Once you've installed the necessary packages and configured your `.env` file, you can start using Bocchi. Simply run the Python script to start the bot:
 
 ```bash
-python main.py
+python3 main.py
 ```
 
 
