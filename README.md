@@ -58,8 +58,3 @@ A known issue with the bot occurs when it exceeds the OpenAI API request limit. 
 ## 🚀 Contributing
 
 Contributions are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
-
-## ⚖️ License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
