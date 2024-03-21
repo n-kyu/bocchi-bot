@@ -32,7 +32,7 @@ emoticons = [
 
 async def search_history_channel(channel, limit=10):
     messages_list = []
-    async for message in channel.history(limit=limit, oldest_first=False):
+    async for message in channel.history(limit=limit, oldest_first=True):
 
         messages_list.append({
             "role": "user" if message.author.id != bot.user.id else "system",
@@ -46,8 +46,8 @@ def asking_gpt(gptmessage):
     response = openai.ChatCompletion.create(
         messages=gptmessage,
         model="gpt-3.5-turbo-16k",
-        temperature=0.9,
-        max_tokens=400
+        temperature=0.8,
+        max_tokens=1000
     )
 
     return response.choices[0].message.content
